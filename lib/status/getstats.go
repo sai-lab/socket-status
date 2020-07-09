@@ -97,7 +97,7 @@ func (s *ServerStat) GetSocketStatSs(h string) {
 	s.Socket = string(result)
 }
 
-func (s *ServerStat) GetSocketStatSock(h string) {
+func (s *ServerStat) GetSocketStatSock() {
 	result := 0
 	flag := false
 	out, err := exec.Command("sudo", "cat", "/proc/net/sockstat").Output()
