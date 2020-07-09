@@ -8,8 +8,8 @@ dep:
 	dep ensure
 
 link:
-	mkdir -p $(GOPATH)/src/github.com/shiro8945
-	ln -sf $(CURDIR) $(GOPATH)/src/github.com/shiro8945/socket-status
+	mkdir -p $(GOPATH)/src/github.com/sai-lab
+	ln -sf $(CURDIR) $(GOPATH)/src/github.com/sai-lab/socket-status
 	ln -sf $(CURDIR)/vendor $(CURDIR)/vendor/src
 
 fmt:
