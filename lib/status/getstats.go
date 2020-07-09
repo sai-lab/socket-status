@@ -128,7 +128,7 @@ func (s *ServerStat) GetSocketStatSock() {
 			break
 		}
 
-		s.Socket = result
+		s.Socket = strconv.Itoa(result)
 	}
 }
 
