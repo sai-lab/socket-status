@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"runtime"
 
-	"github.com/shiro8945/socket-status/lib/functions"
+	"github.com/sai-lab/socket-status/lib/functions"
 )
 
 func main() {

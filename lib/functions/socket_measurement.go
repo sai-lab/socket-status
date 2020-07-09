@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/shiro8945/socket-status/lib/status"
+	"github.com/sai-lab/socket-status/lib/status"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
