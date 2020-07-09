@@ -3,6 +3,7 @@ package status
 import (
 	"log"
 	"os/exec"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -21,8 +22,8 @@ func GetServerStat() ServerStat {
 	}(&ss)
 	go func(d *ServerStat) {
 		defer wg.Done()
-//		d.GetSocketStatNet()
-//		d.GetSocketStatSs()
+		//		d.GetSocketStatNet()
+		//		d.GetSocketStatSs()
 		d.GetSocketStatSock()
 	}(&ss)
 
@@ -42,7 +43,6 @@ func (s *ServerStat) GetHostStat() {
 	s.VirtualizationSystem = h.VirtualizationSystem
 }
 
-
 func (s *ServerStat) GetSocketStatNet(h string) {
 	result := 0
 	out, err := exec.Command("sudo", "netstat", "-na").Output()
@@ -56,13 +56,13 @@ func (s *ServerStat) GetSocketStatNet(h string) {
 			continue
 		} else if words[0] == "tcp" {
 			switch words[len(words)-1] {
-				case "ESTABLISHED":
-					result++
-				case "SYN_SENT":
-					result++
-				case "SYN_RECEIVED":
-					result++
-				default:
+			case "ESTABLISHED":
+				result++
+			case "SYN_SENT":
+				result++
+			case "SYN_RECEIVED":
+				result++
+			default:
 			}
 		}
 	}
@@ -85,13 +85,13 @@ func (s *ServerStat) GetSocketStatSs(h string) {
 			continue
 		}
 		switch words[0] {
-			case "ESTAB":
-				result++
-			case "SYN-SENT":
-				result++
-			case "SYN-RECEIVED":
-				result++
-			default:
+		case "ESTAB":
+			result++
+		case "SYN-SENT":
+			result++
+		case "SYN-RECEIVED":
+			result++
+		default:
 		}
 	}
 	s.Socket = string(result)
@@ -112,7 +112,7 @@ func (s *ServerStat) GetSocketStatSock(h string) {
 			continue
 		}
 		if words[0] == "TCP:" {
-			for i := 1; i < len(words) - 1; i++ {
+			for i := 1; i < len(words)-1; i++ {
 				if words[i] == "inuse" {
 					flag = true
 					continue
@@ -127,8 +127,9 @@ func (s *ServerStat) GetSocketStatSock(h string) {
 			flag = false
 			break
 		}
-	
-	s.Socket = result
+
+		s.Socket = result
+	}
 }
 
 func (s *ServerStat) GetTime() {
