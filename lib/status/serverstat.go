@@ -8,7 +8,7 @@ type ServerStat struct {
 	HostID               string `json:"hostid"`
 	VirtualizationSystem string `json:"virtualizationSystem"`
 	// Socket
-	Socket string `json:"socket"`
+	Socket int `json:"socket"`
 	// Time
 	Time string `json:"time"`
 	// Error

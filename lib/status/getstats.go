@@ -66,7 +66,7 @@ func (s *ServerStat) GetSocketStatNet(h string) {
 			}
 		}
 	}
-	s.Socket = string(result)
+	s.Socket = result
 }
 
 func (s *ServerStat) GetSocketStatSs(h string) {
@@ -94,7 +94,7 @@ func (s *ServerStat) GetSocketStatSs(h string) {
 		default:
 		}
 	}
-	s.Socket = string(result)
+	s.Socket = result
 }
 
 func (s *ServerStat) GetSocketStatSock() {
@@ -128,7 +128,7 @@ func (s *ServerStat) GetSocketStatSock() {
 			break
 		}
 
-		s.Socket = strconv.Itoa(result)
+		s.Socket = result
 	}
 }
 
