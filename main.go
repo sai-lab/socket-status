@@ -13,7 +13,7 @@ func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	http.HandleFunc("/", functions.Handler)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8081", nil)
 
 	channel := make(chan os.Signal, 1)
 	signal.Notify(channel, os.Interrupt)
